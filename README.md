@@ -20,6 +20,10 @@ All data stays in your browser (LocalStorage) — no account, no server, no trac
 - **Financial setup** — income, budget, savings goal with safe-daily-spend calculation
 - **Dark / light theme** toggle
 - **100% local** — LocalStorage only; "Local Demo Mode" badge in the sidebar
+<img width="1917" height="985" alt="image" src="https://github.com/user-attachments/assets/ad1d7bc2-ca49-412e-9be5-23e295da7320" />
+<img width="1917" height="982" alt="image" src="https://github.com/user-attachments/assets/67a97d44-1d7f-4f2a-b5db-066e3958f7e1" />
+<img width="1917" height="976" alt="image" src="https://github.com/user-attachments/assets/af0d06c2-9bd5-43ea-bf6d-4c32910fc6e0" />
+
 
 ## 🚀 Getting Started
 
