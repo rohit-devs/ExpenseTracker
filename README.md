@@ -68,3 +68,4 @@ clearing site data deletes it. Not financial advice.
 ## 📄 License
 
 MIT — see [LICENSE](LICENSE).
+# ExpenseTracker
