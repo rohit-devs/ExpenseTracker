@@ -1,0 +1,675 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Finora AI — Smart Expense Tracker</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="app">
+
+    <!-- ================= SIDEBAR ================= -->
+    <aside class="sidebar">
+
+        <div class="brand">
+            <div class="brand-icon">F</div>
+            <div>
+                <h2>Finora</h2>
+                <span>AI Expense Tracker</span>
+            </div>
+        </div>
+
+        <nav>
+            <button class="nav-item active" data-section="dashboard">
+                <span>⌂</span> Dashboard
+            </button>
+
+            <button class="nav-item" data-section="transactions">
+                <span>↔</span> Transactions
+            </button>
+
+            <button class="nav-item" data-section="analytics">
+                <span>◔</span> Analytics
+            </button>
+
+            <button class="nav-item" data-section="documents">
+                <span>▣</span> Documents
+            </button>
+
+            <button class="nav-item" data-section="settings">
+                <span>⚙</span> Settings
+            </button>
+        </nav>
+
+        <div class="sidebar-bottom">
+
+            <div class="local-status">
+                <span class="status-dot"></span>
+                <div>
+                    <strong>Local Demo Mode</strong>
+                    <small>Your data stays in browser</small>
+                </div>
+            </div>
+
+        </div>
+
+    </aside>
+
+
+    <!-- ================= MAIN ================= -->
+    <main class="main">
+
+        <!-- HEADER -->
+        <header class="topbar">
+
+            <button class="mobile-menu" id="mobileMenu">
+                ☰
+            </button>
+
+            <div>
+                <h1 id="pageTitle">Dashboard</h1>
+                <p id="pageSubtitle">
+                    Understand your money. Improve your habits.
+                </p>
+            </div>
+
+            <div class="header-actions">
+
+                <button class="theme-btn" id="themeBtn">
+                    ◐
+                </button>
+
+                <button class="primary-btn" id="addExpenseBtn">
+                    + Add Expense
+                </button>
+
+            </div>
+
+        </header>
+
+
+        <!-- ================= DASHBOARD ================= -->
+        <section class="section active" id="dashboard">
+
+            <div class="hero-card">
+
+                <div>
+                    <span class="eyebrow">AI FINANCIAL OVERVIEW</span>
+
+                    <h2>
+                        Your money,
+                        <span>under control.</span>
+                    </h2>
+
+                    <p>
+                        Track spending, discover patterns and build
+                        better saving habits.
+                    </p>
+
+                    <button class="hero-btn" id="uploadHeroBtn">
+                        Upload Transactions →
+                    </button>
+                </div>
+
+                <div class="hero-orb">
+                    <div class="orb-inner">
+                        ₹
+                    </div>
+                </div>
+
+            </div>
+
+
+            <!-- STAT CARDS -->
+            <div class="stats-grid">
+
+                <div class="stat-card">
+                    <div class="stat-top">
+                        <span>Monthly Income</span>
+                        <b>↗</b>
+                    </div>
+
+                    <h3 id="incomeValue">₹0</h3>
+
+                    <small>
+                        Your available income
+                    </small>
+                </div>
+
+
+                <div class="stat-card">
+                    <div class="stat-top">
+                        <span>Total Spending</span>
+                        <b>↘</b>
+                    </div>
+
+                    <h3 id="spentValue">₹0</h3>
+
+                    <small id="spentPercent">
+                        0% of budget
+                    </small>
+                </div>
+
+
+                <div class="stat-card">
+                    <div class="stat-top">
+                        <span>Remaining</span>
+                        <b>◎</b>
+                    </div>
+
+                    <h3 id="remainingValue">₹0</h3>
+
+                    <small>
+                        Available this month
+                    </small>
+                </div>
+
+
+                <div class="stat-card">
+                    <div class="stat-top">
+                        <span>Savings Goal</span>
+                        <b>✦</b>
+                    </div>
+
+                    <h3 id="savingsValue">₹0</h3>
+
+                    <small id="savingsPercent">
+                        0% achieved
+                    </small>
+                </div>
+
+            </div>
+
+
+            <!-- BUDGET + AI -->
+            <div class="two-column">
+
+                <div class="panel">
+
+                    <div class="panel-header">
+                        <div>
+                            <span class="panel-label">BUDGET</span>
+                            <h3>Monthly spending limit</h3>
+                        </div>
+
+                        <button class="icon-btn" id="budgetBtn">
+                            ⚙
+                        </button>
+                    </div>
+
+                    <div class="budget-number">
+                        <strong id="budgetSpent">₹0</strong>
+                        <span> / <span id="budgetTotal">₹0</span></span>
+                    </div>
+
+                    <div class="progress">
+                        <div id="budgetProgress"></div>
+                    </div>
+
+                    <div class="budget-footer">
+                        <span id="budgetStatus">
+                            Set your budget
+                        </span>
+
+                        <span id="safeDaily">
+                            ₹0/day
+                        </span>
+                    </div>
+
+                </div>
+
+
+                <div class="panel ai-panel">
+
+                    <div class="panel-header">
+                        <div>
+                            <span class="panel-label">AI INSIGHT</span>
+                            <h3>Smart spending analysis</h3>
+                        </div>
+
+                        <span class="ai-badge">
+                            AI
+                        </span>
+                    </div>
+
+                    <div id="aiInsight">
+                        Add some transactions to generate insights.
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- RECENT + CATEGORIES -->
+            <div class="two-column">
+
+                <div class="panel">
+
+                    <div class="panel-header">
+                        <div>
+                            <span class="panel-label">ACTIVITY</span>
+                            <h3>Recent transactions</h3>
+                        </div>
+
+                        <button class="text-btn" data-go="transactions">
+                            View all →
+                        </button>
+                    </div>
+
+                    <div id="recentTransactions"></div>
+
+                </div>
+
+
+                <div class="panel">
+
+                    <div class="panel-header">
+                        <div>
+                            <span class="panel-label">BREAKDOWN</span>
+                            <h3>Spending categories</h3>
+                        </div>
+                    </div>
+
+                    <div id="categoryBreakdown"></div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= TRANSACTIONS ================= -->
+        <section class="section" id="transactions">
+
+            <div class="section-heading">
+
+                <div>
+                    <span class="panel-label">TRANSACTION MANAGER</span>
+                    <h2>All Transactions</h2>
+                    <p>Search, sort and manage your spending.</p>
+                </div>
+
+                <button class="primary-btn" id="uploadCsvBtn">
+                    ↑ Upload CSV
+                </button>
+
+            </div>
+
+
+            <div class="toolbar">
+
+                <div class="search-box">
+                    🔍
+                    <input
+                        type="text"
+                        id="searchInput"
+                        placeholder="Search merchant or category..."
+                    >
+                </div>
+
+                <select id="categoryFilter">
+                    <option value="all">All Categories</option>
+                    <option>Food</option>
+                    <option>Transport</option>
+                    <option>Shopping</option>
+                    <option>Entertainment</option>
+                    <option>Bills</option>
+                    <option>Health</option>
+                    <option>Education</option>
+                    <option>Other</option>
+                </select>
+
+                <select id="sortSelect">
+                    <option value="newest">Newest First</option>
+                    <option value="oldest">Oldest First</option>
+                    <option value="high">Highest Amount</option>
+                    <option value="low">Lowest Amount</option>
+                    <option value="az">Merchant A-Z</option>
+                </select>
+
+            </div>
+
+
+            <div class="panel table-panel">
+
+                <div class="table-wrapper">
+
+                    <table>
+
+                        <thead>
+                            <tr>
+                                <th>Date</th>
+                                <th>Merchant</th>
+                                <th>Category</th>
+                                <th>Amount</th>
+                                <th>AI</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+
+                        <tbody id="transactionTable"></tbody>
+
+                    </table>
+
+                </div>
+
+                <div id="emptyTransactions" class="empty-state">
+                    <div>↔</div>
+                    <h3>No transactions found</h3>
+                    <p>Upload a CSV or add an expense manually.</p>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= ANALYTICS ================= -->
+        <section class="section" id="analytics">
+
+            <div class="section-heading">
+                <div>
+                    <span class="panel-label">ANALYTICS</span>
+                    <h2>Spending Analytics</h2>
+                    <p>Understand where your money goes.</p>
+                </div>
+            </div>
+
+
+            <div class="analytics-grid">
+
+                <div class="panel chart-panel">
+
+                    <div class="panel-header">
+                        <div>
+                            <span class="panel-label">CATEGORY</span>
+                            <h3>Where you spend</h3>
+                        </div>
+                    </div>
+
+                    <div id="categoryChart" class="category-chart"></div>
+
+                </div>
+
+
+                <div class="panel">
+
+                    <span class="panel-label">RECOMMENDATION</span>
+
+                    <h3>Monthly saving plan</h3>
+
+                    <div id="savingRecommendation"
+                         class="recommendation">
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= DOCUMENTS ================= -->
+        <section class="section" id="documents">
+
+            <div class="section-heading">
+
+                <div>
+                    <span class="panel-label">DOCUMENT CENTER</span>
+                    <h2>Transaction Documents</h2>
+
+                    <p>
+                        Upload bank statements, screenshots or receipts.
+                    </p>
+                </div>
+
+                <button class="primary-btn" id="uploadDocumentBtn">
+                    + Upload File
+                </button>
+
+            </div>
+
+
+            <div class="upload-box" id="dropZone">
+
+                <div class="upload-icon">
+                    ↑
+                </div>
+
+                <h3>Upload transaction document</h3>
+
+                <p>
+                    Drag & drop or choose a CSV, XLSX, PDF or image.
+                </p>
+
+                <button class="secondary-btn" id="chooseFileBtn">
+                    Choose File
+                </button>
+
+                <input
+                    type="file"
+                    id="fileInput"
+                    hidden
+                    accept=".csv,.txt,.xlsx,.xls,.pdf,image/*"
+                >
+
+            </div>
+
+
+            <div id="documentList" class="document-grid"></div>
+
+        </section>
+
+
+        <!-- ================= SETTINGS ================= -->
+        <section class="section" id="settings">
+
+            <div class="section-heading">
+
+                <div>
+                    <span class="panel-label">PERSONAL SETTINGS</span>
+                    <h2>Financial Setup</h2>
+                    <p>Set your income, budget and savings target.</p>
+                </div>
+
+            </div>
+
+
+            <div class="settings-card">
+
+                <div class="input-group">
+                    <label>Monthly Income</label>
+
+                    <input
+                        type="number"
+                        id="incomeInput"
+                        placeholder="30000"
+                    >
+                </div>
+
+
+                <div class="input-group">
+                    <label>Monthly Spending Budget</label>
+
+                    <input
+                        type="number"
+                        id="budgetInput"
+                        placeholder="20000"
+                    >
+                </div>
+
+
+                <div class="input-group">
+                    <label>Monthly Savings Goal</label>
+
+                    <input
+                        type="number"
+                        id="savingsInput"
+                        placeholder="10000"
+                    >
+                </div>
+
+
+                <button class="primary-btn" id="saveSettings">
+                    Save Financial Settings
+                </button>
+
+            </div>
+
+
+            <div class="danger-card">
+
+                <div>
+                    <h3>Reset Demo Data</h3>
+                    <p>
+                        Remove all locally stored transactions and settings.
+                    </p>
+                </div>
+
+                <button class="danger-btn" id="resetData">
+                    Reset Data
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= FOOTER ================= -->
+        <footer>
+
+            <div class="footer-brand">
+                <strong>Finora AI</strong>
+                <span>Smart Personal Expense Tracker</span>
+            </div>
+
+            <div class="footer-center">
+                <span>HTML</span>
+                <span>CSS</span>
+                <span>JavaScript</span>
+                <span>LocalStorage</span>
+            </div>
+
+            <div class="footer-right">
+                <span>© 2026 Finora</span>
+                <span>Local Demo Project</span>
+            </div>
+
+        </footer>
+
+    </main>
+
+</div>
+
+
+<!-- ================= EXPENSE MODAL ================= -->
+<div class="modal" id="expenseModal">
+
+    <div class="modal-card">
+
+        <div class="modal-header">
+            <div>
+                <span class="panel-label">NEW TRANSACTION</span>
+                <h2>Add Expense</h2>
+            </div>
+
+            <button class="close-btn" data-close="expenseModal">
+                ×
+            </button>
+        </div>
+
+
+        <form id="expenseForm">
+
+            <div class="input-group">
+                <label>Merchant / Description</label>
+
+                <input
+                    type="text"
+                    id="expenseName"
+                    required
+                    placeholder="e.g. Swiggy"
+                >
+            </div>
+
+
+            <div class="input-row">
+
+                <div class="input-group">
+                    <label>Amount (₹)</label>
+
+                    <input
+                        type="number"
+                        id="expenseAmount"
+                        required
+                        min="1"
+                        placeholder="450"
+                    >
+                </div>
+
+
+                <div class="input-group">
+                    <label>Date</label>
+
+                    <input
+                        type="date"
+                        id="expenseDate"
+                        required
+                    >
+                </div>
+
+            </div>
+
+
+            <div class="input-group">
+
+                <label>Category</label>
+
+                <select id="expenseCategory">
+
+                    <option value="auto">
+                        ✦ Auto Detect with AI
+                    </option>
+
+                    <option>Food</option>
+                    <option>Transport</option>
+                    <option>Shopping</option>
+                    <option>Entertainment</option>
+                    <option>Bills</option>
+                    <option>Health</option>
+                    <option>Education</option>
+                    <option>Other</option>
+
+                </select>
+
+            </div>
+
+
+            <button class="primary-btn full-btn">
+                Add Transaction
+            </button>
+
+        </form>
+
+    </div>
+
+</div>
+
+
+<!-- ================= TOAST ================= -->
+<div id="toast" class="toast">
+    <span id="toastMessage"></span>
+</div>
+
+
+<script src="script.js"></script>
+
+</body>
+</html>

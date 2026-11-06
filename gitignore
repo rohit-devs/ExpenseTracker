@@ -1,0 +1,33 @@
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editors
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Logs
+*.log
+npm-debug.log*
+
+# Env / secrets — never commit these
+.env
+.env.*
+*.pem
+*.key
+
+# Build / deps (if you add tooling later)
+node_modules/
+dist/
+.cache/
+
+# Local data exports (keep personal finance files out of git!)
+*.csv
+*.xlsx
+*.xls
+*.pdf
+receipts/
